@@ -34,23 +34,11 @@ RUN apt-get update \
     \
     && curl -L https://github.com/gentoo/eudev/archive/master.tar.gz | tar -xz \
     && cp eudev-master/rules/* /etc/udev/rules.d/ \
-    && rm -rf eudev-master \
-    \
-    && if [ "${BUILD_ARCH}" = "armhf" ]; \
-        then \
-            curl -q -L -o /wiringpi.deb https://unicorn.drogon.net/wiringpi-2.46-1.deb \
-            && dpkg -i /wiringpi.deb \
-            && rm -rf /wiringpi.deb; \
-        fi
+    && rm -rf eudev-master
 
 # Install deCONZ
 ARG DECONZ_VERSION
-RUN if [ "${BUILD_ARCH}" = "armhf" ]; \
-        then \
-            curl -q -L -o /deconz.deb https://www.dresden-elektronik.de/deconz/raspbian/beta/deconz-${DECONZ_VERSION}-qt5.deb; \
-        else \
-            curl -q -L -o /deconz.deb https://www.dresden-elektronik.de/deconz/ubuntu/beta/deconz-${DECONZ_VERSION}-qt5.deb; \
-        fi \
+RUN curl -q -L -o /deconz.deb https://www.dresden-elektronik.de/deconz/raspbian/alpha/deconz_${DECONZ_VERSION}-debian-stretch-beta_arm64.deb \
     && dpkg -i /deconz.deb \
     && rm -f /deconz.deb \
     && chown root:root /usr/bin/deCONZ* \

@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.3.1
+
+- Add support for aarch64
+- Drop support for armhf and amd64 
+
 ## 3.3
 
 - Fix relative to absolut device lookup
