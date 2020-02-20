@@ -1,0 +1,19 @@
+{
+    "name": "Traefik Reverse Proxy",
+    "version": "0.1",
+    "slug": "traefik_proxy",
+    "description": "A modern HTTP reverse proxy and load balancer",
+    "url": "https://github.com/containous/traefik",
+    "ingress": true,
+    "ingress_port": 80,
+    "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+    "startup": "application",
+    "boot": "auto",
+    "ports": {
+      "80/tcp": null,
+      "443/tcp": null
+    },
+    "map": ["ssl", "share"],
+    "options": {},
+    "schema": {}
+}
